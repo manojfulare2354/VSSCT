@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Language Selection</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .header-pattern {
+      background: #f7f7f7;
+      padding: 20px;
+    }
+
+    .language-title {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    .language-title span {
+      font-weight: bold;
+      color: #000;
+    }
+
+    .language-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 40px 0;
+      gap: 20px;
+    }
+
+    .lang-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .lang-card:hover {
+      transform: scale(1.05);
+    }
+
+    .lang-char {
+      font-size: 36px;
+      font-weight: bold;
+      color: #2e1f59;
+    }
+
+    .lang-label {
+      margin-top: 10px;
+      font-size: 14px;
+      color: white;
+      background: #2e1f59;
+      width: 100%;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      padding: 6px 0;
+    }
+
+     #popup {
+      display: block; /* Show directly on load */
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    #popup-content {
+      background-color: white;
+      margin: 0% auto;
+      padding: 20px;
+      width: 500px;
+      border-radius: 10px;
+      position: relative;
+      text-align: center;
+    }
+
+    #popup-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    #close-btn {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="popup">
+    <div id="popup-content">
+      <span id="close-btn" onclick="hidePopup()">&times;</span>
+      <img src="/img/ps.jpg" alt="Popup Image"  style="height: 510px;">
+      <p style="color: red;font-size:x-large;"><marquee>श्री शिवाय नमस्तुभ्यं !</marquee></p>
+      
+    </div>
+  </div>
+
+
+  <div class="header-pattern">
+    <!-- Optional: you can add SVG or image pattern -->
+    <img src="/img/om.webp" alt="Pattern" height="100" />
+  </div>
+
+  <div class="language-title">
+    <span>आपली</span> भाषा निवडा
+  </div>
+
+  <div class="language-options">
+    <div class="lang-card" onclick="selectLanguage('English')">
+      <div class="lang-char">A</div>
+      <div class="lang-label">English</div>
+    </div>
+    <div class="lang-card" onclick="selectLanguage('Marathi')">
+      <div class="lang-char">अ</div>
+      <div class="lang-label">मराठी</div>
+    </div>
+    <div class="lang-card" onclick="selectLanguage('Hindi')">
+      <div class="lang-char">अ</div>
+      <div class="lang-label">हिंदी</div>
+    </div>
+    <div class="lang-card" onclick="selectLanguage('Gujarati')">
+      <div class="lang-char">ઍ</div>
+      <div class="lang-label">ગુજરાતી</div>
+    </div>
+  </div>
+  <a href="/Country2.html"><button type="submit">Submit</button></a>
+
+  <script>
+    function selectLanguage(lang) {
+      //alert("Language selected: " + lang);
+
+      // You can redirect or store language in localStorage here
+    }
+
+    function hidePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+     setTimeout(function() {
+      document.getElementById("popup").style.display = "none";
+    }, 5000);
+  </script>
+</body>
+</html>
