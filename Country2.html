@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Country Selector</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #000;
+    }
+
+    h2 span {
+      font-weight: bold;
+    }
+
+    .search-box {
+      margin: 20px 0;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .country-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .country-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: #fff;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .country-item:hover {
+      background: #ececec;
+    }
+
+    .flag {
+      width: 30px;
+      height: 20px;
+      margin-right: 15px;
+      object-fit: cover;
+    }
+
+    .country-name {
+      font-size: 16px;
+      color: #333;
+    }
+    button{
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      margin-left: 45%;
+    
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2><span>तुमचा</span> देश निवडा</h2>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search country..." onkeyup="filterCountries()">
+    </div>
+
+    <ul class="country-list" id="countryList">
+      <!-- Country items will be inserted here dynamically -->
+    </ul>
+  </div>
+   <a href="/Mobile_number3.html"><button type="submit">Submit</button></a>
+
+  <script>
+    const countries = [
+      { name: "India", code: "+91", flag: "https://flagcdn.com/w40/in.png" },
+      { name: "Afghanistan", code: "+93", flag: "https://flagcdn.com/w40/af.png" },
+      { name: "Åland Islands", code: "+358", flag: "https://flagcdn.com/w40/ax.png" },
+      { name: "Albania", code: "+355", flag: "https://flagcdn.com/w40/al.png" },
+      { name: "Algeria", code: "+213", flag: "https://flagcdn.com/w40/dz.png" },
+      { name: "American Samoa", code: "+1", flag: "https://flagcdn.com/w40/as.png" },
+      { name: "Andorra", code: "+376", flag: "https://flagcdn.com/w40/ad.png" }
+    ];
+
+    function loadCountries() {
+      const list = document.getElementById('countryList');
+      list.innerHTML = '';
+      countries.forEach(country => {
+        const li = document.createElement('li');
+        li.className = 'country-item';
+        li.innerHTML = `
+          <img class="flag" src="${country.flag}" alt="${country.name} Flag">
+          <span class="country-name">${country.name} (${country.code})</span>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function filterCountries() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const items = document.querySelectorAll(".country-item");
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? "flex" : "none";
+      });
+    }
+
+    window.onload = loadCountries;
+  </script>
+ 
+
+</body>
+</html>

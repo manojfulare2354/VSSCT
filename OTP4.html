@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verification Code</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: #fff;
+      color: #2e1f59;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .top-image {
+      width: 50%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .instruction {
+      font-size: 14px;
+      color: #666;
+      margin: 10px 0 20px;
+    }
+
+    .otp-display {
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 10px;
+      margin-bottom: 20px;
+    }
+
+    .otp-inputs input {
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      text-align: center;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      margin: 0 5px;
+    }
+
+    .timer {
+      margin: 20px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      background-color: #2e1f59;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #4a2b7e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img class="top-image" src="/img/Rudhraksh.jpg" alt="kubereswar">
+
+    <div class="title">श्री कुबेरेश्वर धाम </div>
+    <div class="subtitle">Verification Code</div>
+    <div class="instruction">Please enter the verification code shown below.</div>
+
+    <div id="generatedOTP" class="otp-display">----</div>
+
+    <div class="otp-inputs" id="otpInputs">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+    </div>
+
+    <div class="timer" id="timer">00:01:00</div>
+
+    <a href="/Form5.html"><button class="btn" onclick="verifyOTP()">Verify</button></a>
+  </div>
+
+  <script>
+    let otp = "";
+    let countdown = 60;
+
+    function generateOTP() {
+      otp = Math.floor(1000 + Math.random() * 9000).toString();
+      document.getElementById("generatedOTP").textContent = otp.split('').join(' ');
+    }
+
+    function startTimer() {
+      const timerEl = document.getElementById("timer");
+      const interval = setInterval(() => {
+        let minutes = Math.floor(countdown / 60);
+        let seconds = countdown % 60;
+        timerEl.textContent = `00:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        countdown--;
+        if (countdown < 0) {
+          clearInterval(interval);
+          timerEl.textContent = "Expired!";
+        }
+      }, 1000);
+    }
+
+    function verifyOTP() {
+      const inputs = document.querySelectorAll("#otpInputs input");
+      let entered = "";
+      inputs.forEach(input => entered += input.value);
+      if (entered === otp) {
+        alert("OTP Verified Successfully!");
+      } else {
+        alert("Incorrect OTP. Please try again.");
+      }
+    }
+
+    // Auto move to next input
+    const inputs = document.querySelectorAll("#otpInputs input");
+    inputs.forEach((input, index) => {
+      input.addEventListener("input", () => {
+        if (input.value && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+    });
+
+    // Initialize on load
+    window.onload = () => {
+      generateOTP();
+      startTimer();
+    };
+  </script>
+
+</body>
+</html>

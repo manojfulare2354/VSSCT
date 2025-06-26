@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ration Card Family Form</title>
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 30px;
+}
+
+.form-container {
+  max-width: 800px;
+  background: white;
+  margin: auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+fieldset {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+legend {
+  padding: 0 10px;
+  font-weight: bold;
+  color: #444;
+}
+
+input, select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.submit-box {
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+.child-entry {
+  border: 1px dashed #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  background-color: #fafafa;
+  position: relative;
+}
+
+.child-entry button {
+  margin-top: 10px;
+  background-color: #dc3545;
+}
+
+.child-entry button:hover {
+  background-color: #a71d2a;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>📜 Seva Form Details</h2>
+
+    <form id="rationForm">
+      <!-- Personal Details -->
+      <fieldset>
+        <legend>👤 Personal Details</legend>
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="tel" name="contact" placeholder="Contact Number" required />
+        <input type="email" name="email" placeholder="Email ID" />
+        <input type="text" name="address" placeholder="Address" required />
+        <input type="text" name="pincode" placeholder="Pin Code" required />
+        <input type="text" name="city" placeholder="City" required />
+        <input type="text" name="state" placeholder="State" required />
+        <input type="text" name="country" placeholder="Country" required />
+
+        <select name="sevaType" required>
+          <option value="">Select Seva Type</option>
+          <option value="Antyodaya">Antyodaya</option>
+          <option value="BPL">BPL</option>
+          <option value="APL">APL</option>
+          <option value="Other">Other</option>
+        </select>
+      </fieldset>
+
+      <!-- Educational Details -->
+      <fieldset>
+        <legend>🎓 Educational Detail</legend>
+        <input type="text" name="education" placeholder="Highest Qualification" required />
+        <input type="text" name="school" placeholder="Last Attended School/College" />
+      </fieldset>
+
+      <!-- Family Members -->
+      <fieldset>
+        <legend>👨‍👩‍👧 Family Members</legend>
+        <h4>Father (Head of Family)</h4>
+        <input type="text" name="fatherName" placeholder="Father's Name" required />
+        <input type="number" name="fatherAge" placeholder="Age" required />
+
+        <h4>Mother</h4>
+        <input type="text" name="motherName" placeholder="Mother's Name" required />
+        <input type="number" name="motherAge" placeholder="Age" required />
+
+        <h4>Children</h4>
+        <div id="childrenContainer"></div>
+        <button type="button" onclick="addChild()">+ Add Child</button>
+      </fieldset>
+
+      <!-- Documents -->
+      <fieldset>
+        <legend>📁 Documents Upload</legend>
+        <label>Upload Photo (jpg/png):</label>
+        <input type="file" name="photo" accept="image/*" required />
+
+        <label>Upload Aadhaar Card (PDF):</label>
+        <input type="file" name="aadhaar" accept="application/pdf" required />
+
+        <label>Upload Light Bill (PDF):</label>
+        <input type="file" name="lightBill" accept="application/pdf" required />
+      </fieldset>
+
+      <div class="submit-box">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    let childIndex = 0;
+
+function addChild() {
+  const container = document.getElementById('childrenContainer');
+  const div = document.createElement('div');
+  div.classList.add('child-entry');
+  div.innerHTML = `
+    <input type="text" name="childName${childIndex}" placeholder="Child Name" required />
+    <input type="number" name="childAge${childIndex}" placeholder="Age" required />
+    <button type="button" onclick="removeChild(this)">Remove</button>
+  `;
+  container.appendChild(div);
+  childIndex++;
+}
+
+function removeChild(button) {
+  button.parentElement.remove();
+}
+
+document.getElementById('rationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Form submitted successfully!\n(This is just a demo)');
+});
+
+
+  </script>
+</body>
+</html>

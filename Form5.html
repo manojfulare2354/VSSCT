@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <title>नोंदणी फॉर्म</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      color: #2e1f59;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .header-pattern {
+      width: 45%;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .input-field {
+      display: flex;
+      align-items: center;
+      background: #f4f4f4;
+      border-radius: 30px;
+      padding: 10px 20px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .input-field i {
+      margin-right: 10px;
+    }
+
+    .input-field input {
+      border: none;
+      outline: none;
+      background: transparent;
+      flex: 1;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: #05d197;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .submit-btn i {
+      margin-left: 10px;
+    }
+
+    .submit-btn:hover {
+      background-color: #7d7e2b;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Optional: SVG header pattern -->
+    <img class="header-pattern" src="/img/om.webp" alt="pattern">
+
+    <div class="title">नोंदणी</div>
+    <div class="subtitle">व्यक्तिक माहिती</div>
+
+    <div class="input-field">
+      <i>👤</i>
+      <input type="text" placeholder="आपले पहिले नाव">
+    </div>
+
+    <div class="input-field">
+      <i>👤</i>
+      <input type="text" placeholder="आपले मधले नाव">
+    </div>
+
+    <div class="input-field">
+      <i>👤</i>
+      <input type="text" placeholder="आपले आडनाव">
+    </div>
+
+    <div class="input-field">
+      <i>📧</i>
+      <input type="email" placeholder="ई-मेल">
+    </div>
+
+    <div class="input-field">
+      <i>📱</i>
+      <input type="text" placeholder="मोबाईल नंबर">
+    </div>
+
+    <div class="input-field">
+      <i>🌐</i>
+      <input type="text" placeholder="शहर">
+    </div>
+
+    <a href="/final_page6.html"><button class="submit-btn" onclick="submitForm()">
+      नोंदणी <i>➡️</i></a>
+    </button>
+  </div>
+
+  <script>
+    function submitForm() {
+      alert("नोंदणी पूर्ण झाली!");
+      // Here you can capture form data or redirect
+    }
+  </script>
+
+</body>
+</html>
