@@ -2,76 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Language Selection</title>
   <style>
+    :root {
+      --primary-color: #2e1f59;
+      --accent-color: #007bff;
+      --bg-color: #f7f7f7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: sans-serif;
-      background: #f7f7f7;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
       margin: 0;
       padding: 0;
       text-align: center;
     }
 
     .header-pattern {
-      background: #f7f7f7;
+      background: var(--bg-color);
       padding: 20px;
     }
 
+    .header-pattern img {
+      height: 80px;
+      max-width: 100%;
+    }
+
     .language-title {
-      font-size: 24px;
-      margin-top: 20px;
+      font-size: 28px;
+      margin-top: 10px;
+      color: #333;
     }
 
     .language-title span {
       font-weight: bold;
-      color: #000;
+      color: var(--primary-color);
     }
 
     .language-options {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin: 40px 0;
+      margin: 30px auto;
       gap: 20px;
+      max-width: 700px;
     }
 
     .lang-card {
       background: white;
       border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 100px;
-      height: 120px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 120px;
+      height: 140px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.3s;
     }
 
     .lang-card:hover {
       transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
 
     .lang-char {
-      font-size: 36px;
+      font-size: 42px;
       font-weight: bold;
-      color: #2e1f59;
+      color: var(--primary-color);
     }
 
     .lang-label {
-      margin-top: 10px;
-      font-size: 14px;
+      margin-top: 12px;
+      font-size: 15px;
       color: white;
-      background: #2e1f59;
+      background: var(--primary-color);
       width: 100%;
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
-      padding: 6px 0;
+      padding: 8px 0;
     }
 
-     #popup {
-      display: block; /* Show directly on load */
+    #popup {
+      display: block;
       position: fixed;
       z-index: 999;
       left: 0;
@@ -83,9 +102,10 @@
 
     #popup-content {
       background-color: white;
-      margin: 0% auto;
+      margin: 10% auto;
       padding: 20px;
-      width: 500px;
+      width: 90%;
+      max-width: 500px;
       border-radius: 10px;
       position: relative;
       text-align: center;
@@ -99,30 +119,54 @@
 
     #close-btn {
       position: absolute;
-      top: 5px;
-      right: 10px;
-      font-size: 20px;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
       cursor: pointer;
       color: red;
+    }
+
+    .submit-button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: var(--accent-color);
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .submit-button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 500px) {
+      .lang-card {
+        width: 45%;
+        height: auto;
+        padding: 20px 0;
+      }
+
+      .language-title {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
-
   <div id="popup">
     <div id="popup-content">
       <span id="close-btn" onclick="hidePopup()">&times;</span>
-      <img src="img/ps.jpg" ... alt="popup" height="100" />
-
-      <p style="color: red;font-size:x-large;"><marquee>श्री शिवाय नमस्तुभ्यं !</marquee></p>
-      
+      <img src="img/ps.jpg" alt="popup" />
+      <p style="color: red; font-size: x-large;"><marquee>श्री शिवाय नमस्तुभ्यं !</marquee></p>
     </div>
   </div>
 
-
   <div class="header-pattern">
-    <!-- Optional: you can add SVG or image pattern -->
-    <img src="img/om.webp"... alt="Pattern" height="60px" />
+    <img src="img/om.webp" alt="Pattern" />
   </div>
 
   <div class="language-title">
@@ -147,23 +191,21 @@
       <div class="lang-label">ગુજરાતી</div>
     </div>
   </div>
- <a href="Country2.html"><button type="submit">Submit</button></a>
 
+  <a href="Country2.html">
+    <button class="submit-button" type="button">Submit</button>
+  </a>
 
   <script>
     function selectLanguage(lang) {
-      //alert("Language selected: " + lang);
-
-      // You can redirect or store language in localStorage here
+      localStorage.setItem('selectedLanguage', lang);
     }
 
     function hidePopup() {
       document.getElementById("popup").style.display = "none";
     }
 
-     setTimeout(function() {
-      document.getElementById("popup").style.display = "none";
-    }, 5000);
+    setTimeout(hidePopup, 5000);
   </script>
 </body>
-</html>
+</html>  
